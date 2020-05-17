@@ -1,5 +1,6 @@
 package it.discovery.nosql.repository;
 
+import it.discovery.nosql.BaseMongoTest;
 import it.discovery.nosql.model.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +9,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class BookRepositoryTest {
-
+public class BookRepositoryTest extends BaseMongoTest {
 	@Autowired
 	BookRepository bookRepository;
 
@@ -34,7 +34,7 @@ public class BookRepositoryTest {
 		review.setComment("good");
 		review.setRate(10);
 		book2.addReview(review);
-		//bookRepository.saveAll(List.of(book1, book2));
+		bookRepository.saveAll(List.of(book1, book2));
 
 		List<Book> books = bookRepository.findWithReviews();
 		assertEquals(1, books.size());

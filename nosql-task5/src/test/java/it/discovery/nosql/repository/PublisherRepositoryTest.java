@@ -1,11 +1,18 @@
 package it.discovery.nosql.repository;
 
+import it.discovery.nosql.BaseMongoTest;
 import it.discovery.nosql.model.Contact;
 import it.discovery.nosql.model.Publisher;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class PublisherRepositoryTest {
+import java.time.LocalDateTime;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class PublisherRepositoryTest extends BaseMongoTest {
 
 	@Autowired
 	PublisherRepository publisherRepository;
@@ -19,13 +26,13 @@ public class PublisherRepositoryTest {
 		contact.setPhone("1234567");
 		publisher.setContact(contact);
 
-//		publisherRepository.save(publisher);
-//
-//		List<Publisher> list = publisherRepository.findAll();
-//		assertEquals(1, list.size());
-//		assertEquals("Packt", list.get(0).getName());
-//		assertEquals("1234567", list.get(0).getContact().getPhone());
-//		assertTrue(list.get(0).getCreated().isBefore(LocalDateTime.now()));
+		publisherRepository.save(publisher);
+
+		List<Publisher> list = publisherRepository.findAll();
+		assertEquals(1, list.size());
+		assertEquals("Packt", list.get(0).getName());
+		assertEquals("1234567", list.get(0).getContact().getPhone());
+		assertTrue(list.get(0).getCreated().isBefore(LocalDateTime.now()));
 	}
 
 }
