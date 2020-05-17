@@ -8,7 +8,7 @@
     <packaging>pom</packaging>
 
     <properties>
-        <java.version>1.14</java.version>
+        <java.version>1.13</java.version>
         <hibernate.version>5.4.15.Final</hibernate.version>
         <spring.boot.version>2.2.7.RELEASE</spring.boot.version>
     </properties>
@@ -36,7 +36,7 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
-                    <release>14</release>
+                    <release>13</release>
                 </configuration>
             </plugin>
             <plugin>

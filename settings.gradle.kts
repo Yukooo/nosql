@@ -1,2 +1,2 @@
-rootProject.name = "advanced-hibernate"
-include("nosql-task1")
+rootProject.name = "nosql"
+include("nosql-task1", "nosql-task5", "nosql-task12")

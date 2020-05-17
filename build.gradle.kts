@@ -10,8 +10,8 @@ allprojects {
 subprojects {
     apply(plugin = "java")
 
-    java.sourceCompatibility = JavaVersion.VERSION_14
-    java.targetCompatibility = JavaVersion.VERSION_14
+    java.sourceCompatibility = JavaVersion.VERSION_13
+    java.targetCompatibility = JavaVersion.VERSION_13
 
     repositories {
         jcenter()
@@ -23,6 +23,12 @@ subprojects {
 
         compileOnly("org.projectlombok:lombok:1.18.12")
         annotationProcessor("org.projectlombok:lombok:1.18.12")
+        testCompile("org.springframework.boot:spring-boot-starter-test")
     }
+
+    tasks.test {
+        useJUnitPlatform()
+    }
+
 }
 
