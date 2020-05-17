@@ -2,3 +2,4 @@ spring:
   data:
     mongodb:
       database: library
+      auto-index-creation: true
