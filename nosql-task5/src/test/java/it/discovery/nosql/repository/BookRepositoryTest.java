@@ -1,9 +1,6 @@
 package it.discovery.nosql.repository;
 
-import it.discovery.nosql.model.Book;
-import it.discovery.nosql.model.Person;
-import it.discovery.nosql.model.Publisher;
-import it.discovery.nosql.model.Review;
+import it.discovery.nosql.model.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -24,14 +21,14 @@ public class BookRepositoryTest {
 		publisher.setName("Packt");
 
 		Book book1 = new Book();
-		book1.setNameEn("JPA");
-		book1.setAuthor(author);
-		book1.setPublisher(publisher);
+		book1.addTranslation(new Translation("JPA", "en"));
+		book1.setAuthor(new PersonInfo(author.getId(), author.getName()));
+		book1.setPublisherId(publisher.getId());
 
 		Book book2 = new Book();
-		book2.setNameEn("Hibernate");
-		book2.setAuthor(author);
-		book2.setPublisher(publisher);
+		book2.addTranslation(new Translation("Hibernate", "en"));
+		book2.setAuthor(new PersonInfo(author.getId(), author.getName()));
+		book2.setPublisherId(publisher.getId());
 
 		Review review = new Review();
 		review.setComment("good");
@@ -41,7 +38,7 @@ public class BookRepositoryTest {
 
 		List<Book> books = bookRepository.findWithReviews();
 		assertEquals(1, books.size());
-		assertEquals("Hibernate", books.get(0).getNameEn());
+		assertEquals("Hibernate", books.get(0).getNames().get(0).getText());
 	}
 
 }

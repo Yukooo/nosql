@@ -18,7 +18,7 @@ public class Person extends BaseEntity {
 	/**
 	 * Books that person has written
 	 */
-	private List<Book> books;
+	private List<String> books;
 
 	private Contact contact;
 }

@@ -8,17 +8,17 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public abstract class BaseEntity {
-	private Integer id;
+    private String id;
 
-	private LocalDateTime created;
+    private LocalDateTime created;
 
-	private LocalDateTime modified;
+    private LocalDateTime modified;
 
-	public void OnPersist() {
-		created = LocalDateTime.now();
-	}
+    public void OnPersist() {
+        created = LocalDateTime.now();
+    }
 
-	public void onUpdate() {
+    public void onUpdate() {
 		modified = LocalDateTime.now();
 	}
 }

@@ -11,9 +11,9 @@ import java.util.List;
 @Getter
 @Setter
 public class Publisher extends BaseEntity {
-	private String name;
+    private String name;
 
-	private List<Book> books;
+    private List<String> books;
 
-	private Contact contact;
+    private Contact contact;
 }

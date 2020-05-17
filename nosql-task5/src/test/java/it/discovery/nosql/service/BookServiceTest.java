@@ -1,6 +1,7 @@
 package it.discovery.nosql.service;
 
 import it.discovery.nosql.model.Book;
+import it.discovery.nosql.model.Translation;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,12 +17,12 @@ public class BookServiceTest {
 	@Test
 	void saveBook_findByName_success() {
 		Book book = new Book();
-		book.setNameEn("JPA");
+		book.addTranslation(new Translation("JPA", "en"));
 		bookService.saveBook(book);
 
 		List<Book> books = bookService.findByName("JPA");
 		assertEquals(1, books.size());
-		assertEquals("JPA", books.get(0).getNameEn());
+		assertEquals("JPA", books.get(0).getNames().get(0).getText());
 	}
 
 }
