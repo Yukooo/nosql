@@ -1,0 +1,22 @@
+version: '3.7'
+
+x-mongo-img:
+  &mongo_img
+  image: mongo:4
+  command: mongod --replSet mongo-rs
+  networks:
+    - mongo-network
+services:
+  mongo1:
+    container_name: mongo1
+    ports:
+      - "27017:27017"
+    <<: *mongo_img
+  mongo2:
+    container_name: mongo2
+    <<: *mongo_img
+  mongo3:
+    <<: *mongo_img
+networks:
+  mongo-network:
+    driver: bridge
