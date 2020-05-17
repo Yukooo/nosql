@@ -12,7 +12,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 public abstract class BaseMongoTest {
 
     @Container
-    static GenericContainer mongo = new GenericContainer("mongo:4")
+    static GenericContainer mongo = new GenericContainer<>("mongo:4")
             .withExposedPorts(27017);
 
     @DynamicPropertySource
